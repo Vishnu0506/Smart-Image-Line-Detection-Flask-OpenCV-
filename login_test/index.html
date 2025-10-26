@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="author" content="Kodinger">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>Runway Vision - Login</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css  " integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+	<style>
+		.my-login-page {
+			background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+			min-height: 100vh;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+		.card-wrapper {
+			margin-top: auto;
+			margin-bottom: auto;
+			width: 100%;
+			max-width: 420px;
+		}
+		.brand {
+			text-align: center;
+			margin-bottom: 25px;
+		}
+		.brand img {
+			max-width: 140px;
+			height: auto;
+			border-radius: 12px;
+			box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+			border: 3px solid white;
+		}
+		.app-title {
+			font-family: 'Poppins', sans-serif;
+			font-weight: 700;
+			font-size: 28px;
+			color: white;
+			text-align: center;
+			margin-bottom: 8px;
+			text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+		}
+		.app-subtitle {
+			font-size: 14px;
+			color: rgba(255,255,255,0.9);
+			text-align: center;
+			margin-bottom: 30px;
+			font-weight: 500;
+		}
+		.card.fat {
+			border-radius: 16px;
+			box-shadow: 0 12px 32px rgba(0,0,0,0.2);
+			border: none;
+			background: white;
+		}
+		.card-title {
+			text-align: center;
+			margin-bottom: 28px;
+			color: #2c3e50;
+			font-weight: 700;
+			font-size: 24px;
+		}
+		.form-group {
+			margin-bottom: 22px;
+		}
+		.form-control {
+			border-radius: 10px;
+			border: 2px solid #e1e8ed;
+			padding: 14px 18px;
+			transition: all 0.3s ease;
+			font-size: 15px;
+		}
+		.form-control:focus {
+			border-color: #667eea;
+			box-shadow: 0 0 0 0.25rem rgba(102, 126, 234, 0.25);
+		}
+		.invalid-feedback {
+			font-size: 0.875rem;
+			color: #e74c3c;
+		}
+		.custom-control-label {
+			color: #6c757d;
+			font-weight: 500;
+			font-size: 14px;
+		}
+		.btn-primary {
+			background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+			border: none;
+			border-radius: 10px;
+			padding: 14px;
+			font-weight: 600;
+			transition: all 0.3s ease;
+			font-size: 16px;
+			box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+		}
+		.btn-primary:hover {
+			transform: translateY(-3px);
+			box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+			background: linear-gradient(135deg, #5a6fd8 0%, #6a4190 100%);
+		}
+		.footer {
+			text-align: center;
+			margin-top: 28px;
+			color: rgba(255,255,255,0.8);
+			font-size: 0.9rem;
+		}
+		.float-right {
+			color: #667eea;
+			text-decoration: none;
+			font-size: 0.875rem;
+			font-weight: 500;
+		}
+		.float-right:hover {
+			color: #5a6fd8;
+			text-decoration: underline;
+		}
+		.login-link {
+			color: #667eea;
+			text-decoration: none;
+			font-weight: 600;
+		}
+		.login-link:hover {
+			color: #5a6fd8;
+			text-decoration: underline;
+		}
+		.input-group {
+			position: relative;
+		}
+		.toggle-password {
+			position: absolute;
+			right: 16px;
+			top: 50%;
+			transform: translateY(-50%);
+			color: #6c757d;
+			cursor: pointer;
+			font-size: 16px;
+			z-index: 10;
+		}
+		.toggle-password:hover {
+			color: #667eea;
+		}
+		.error-message {
+			color: #e74c3c;
+			font-size: 0.9rem;
+			margin-top: 10px;
+			display: none;
+			text-align: center;
+			font-weight: 500;
+		}
+		.success-message {
+			color: #27ae60;
+			font-size: 0.9rem;
+			margin-top: 10px;
+			display: none;
+			text-align: center;
+			font-weight: 500;
+		}
+		.form-label {
+			font-weight: 600;
+			color: #495057;
+			margin-bottom: 8px;
+			font-size: 14px;
+		}
+	</style>
+</head>
+
+<body class="my-login-page">
+	<section class="h-100">
+		<div class="container h-100">
+			<div class="row justify-content-md-center h-100 align-items-center">
+				<div class="card-wrapper">
+					<div class="app-title">Runway Vision</div>
+					<div class="app-subtitle">Because ‘Guess and Land’ Is Not a Strategy.</div>
+					<div class="brand">
+						<img src="img/logo.jpg" alt="Runway Vision Logo">
+					</div>
+					<div class="card fat">
+						<div class="card-body">
+							<h4 class="card-title">Welcome Back</h4>
+							<form method="POST" class="my-login-validation" novalidate="">
+								<div class="form-group">
+									<label for="username" class="form-label">Username</label>
+									<input id="username" type="text" class="form-control" name="username" value="" required autofocus placeholder="Enter your username">
+									<div class="invalid-feedback">
+										Username is required
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label for="password" class="form-label">Password
+										<a href="#" class="float-right">
+											Forgot Password?
+										</a>
+									</label>
+									<div class="input-group">
+										<input id="password" type="password" class="form-control" name="password" required placeholder="Enter your password">
+										<span class="toggle-password" onclick="togglePassword()">👁️</span>
+									</div>
+									<div class="invalid-feedback">
+										Password is required
+									</div>
+								</div>
+
+								<div class="form-group">
+									<div class="custom-checkbox custom-control">
+										<input type="checkbox" name="remember" id="remember" class="custom-control-input">
+										<label for="remember" class="custom-control-label">Remember Me</label>
+									</div>
+								</div>
+
+								<div class="error-message" id="error-message"></div>
+								<div class="success-message" id="success-message"></div>
+
+								<div class="form-group m-0">
+									<button type="submit" class="btn btn-primary btn-block" id="login-btn">
+										Login
+									</button>
+								</div>
+								<div class="mt-4 text-center">
+									Don't have an account? <a href="#" class="login-link">Pretend you care and skip it.</a>
+								</div>
+							</form>
+						</div>
+					</div>
+					<div class="footer" >
+						Copyright &copy; 2025 &mdash; <a style="color: #ffffff;" href="https://guns.lol/1nonlyvishnu" target="_blank">github.com/Vishnu0506</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<script>
+		function togglePassword() {
+			const passwordInput = document.getElementById('password');
+			const toggleIcon = document.querySelector('.toggle-password');
+			
+			if (passwordInput.type === 'password') {
+				passwordInput.type = 'text';
+				toggleIcon.textContent = '👁️‍🗨️';
+			} else {
+				passwordInput.type = 'password';
+				toggleIcon.textContent = '👁️';
+			}
+		}
+
+		document.querySelector('form').addEventListener('submit', function(e) {
+			e.preventDefault();
+			
+			const username = document.getElementById('username').value.trim();
+			const password = document.getElementById('password').value;
+			const errorMessage = document.getElementById('error-message');
+			const successMessage = document.getElementById('success-message');
+			const loginBtn = document.getElementById('login-btn');
+			
+			// Clear previous messages
+			errorMessage.style.display = 'none';
+			successMessage.style.display = 'none';
+			
+			// Validate inputs
+			if (!username || !password) {
+				errorMessage.textContent = 'Please fill in all fields';
+				errorMessage.style.display = 'block';
+				return;
+			}
+			
+			// Check credentials
+			if (username === 'Admin' && password === 'admin@123') {
+				// Show success message
+				successMessage.textContent = 'Login successful! Redirecting...';
+				successMessage.style.display = 'block';
+				loginBtn.disabled = true;
+				loginBtn.textContent = 'Logging in...';
+				
+				// Redirect after a short delay
+				setTimeout(function() {
+					window.location.href = 'main.html';
+				}, 1500);
+			} else {
+				// Show error message
+				errorMessage.textContent = 'Invalid username or password';
+				errorMessage.style.display = 'block';
+				
+				// Add shake animation to form
+				const form = document.querySelector('form');
+				form.style.animation = 'shake 0.5s';
+				setTimeout(() => {
+					form.style.animation = '';
+				}, 500);
+			}
+		});
+
+		// Add shake animation CSS
+		const style = document.createElement('style');
+		style.textContent = `
+			@keyframes shake {
+				0%, 100% { transform: translateX(0); }
+				20%, 60% { transform: translateX(-8px); }
+				40%, 80% { transform: translateX(8px); }
+			}
+		`;
+		document.head.appendChild(style);
+	</script>
+</body>
+</html>
